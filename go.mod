@@ -1,3 +1,3 @@
-module github.com/jdwalkerzhere/pokedexcli
+module pokedexcli
 
 go 1.22.3
