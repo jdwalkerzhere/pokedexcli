@@ -152,6 +152,17 @@ func inspect(configuration *config, pokedex map[string]api.Pokemon, pokemon stri
 	return nil
 }
 
+func pokedex(configuration *config, pokedex map[string]api.Pokemon, pokemon string) error {
+	if len(pokedex) == 0 {
+		return fmt.Errorf("You have not caught any Pokemon, Go catch some!")
+	}
+	fmt.Println("Your Pokedex")
+	for name := range pokedex {
+		fmt.Printf("\t-%s\n", name)
+	}
+	return nil
+}
+
 func main() {
 	supportedCommands = map[string]cliCommand{
 		"exit": {
@@ -188,6 +199,11 @@ func main() {
 			name:        "inspect",
 			description: "Inspect given pokemon",
 			callback:    inspect,
+		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "Display the pokemon you've caught",
+			callback:    pokedex,
 		},
 	}
 
